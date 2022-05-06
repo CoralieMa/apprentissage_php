@@ -11,7 +11,9 @@ if (isset($_SESSION["tab"])){
 	$page = $_SESSION["page"];
 	if (isset($_POST['prec'])){
 		if (isset($_POST['nombre'])){
-			$tab[$page]["réponseUtil"] = $_POST['nombre'];
+			if ($_POST['nombre'] != ""){
+				$tab[$page]["réponseUtil"] = $_POST['nombre'];
+			}
 	}
 		$page--;
 		if ($page == 0){
@@ -21,7 +23,9 @@ if (isset($_SESSION["tab"])){
 	}
 	if (isset($_POST['suiv'])){
 		if (isset($_POST['nombre'])){
-			$tab[$page]["réponseUtil"] = $_POST['nombre'];
+			if ($_POST['nombre'] != ""){
+				$tab[$page]["réponseUtil"] = $_POST['nombre'];
+			}	
 	}
 		$page++;
 		if ($page == 11){
@@ -56,7 +60,7 @@ else {
 			$operation = "/";
 			$reponseOrdi = (round(($chiffre1 / $chiffre2), 2));
 		}
-		$tab[$i]=["chiffre1"=>$chiffre1, "chiffre2"=>$chiffre2, "opé"=>$operation, "réponseOrdi"=>$reponseOrdi, "réponseUtil"=> ""];
+		$tab[$i]=["chiffre1"=>$chiffre1, "chiffre2"=>$chiffre2, "opé"=>$operation, "réponseOrdi"=>$reponseOrdi, "réponseUtil"=> "?"];
 	}
 	$_SESSION["tab"] = $tab;
 }	
